@@ -7,7 +7,7 @@ word=$1
 if [ "$word" == "" ]; then
     echo "Text not provided"
 else
-    curl -s $url >file.txt
+    curl -s $url -o file.txt
     count=$(grep -ac $word file.txt)
     line=$(grep -anm1 $word file.txt | cut -d ":" -f 1)
 

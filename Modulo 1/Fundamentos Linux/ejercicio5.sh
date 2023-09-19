@@ -6,7 +6,7 @@ word=$2
 if [ "$#" != 2 ]; then
     echo "Se necesitan unicamente dos parametros para ejecutar este script"
 else
-    curl -s $url >file.txt
+    curl -s $url -o file.txt
     count=$(grep -ac $word file.txt)
     line=$(grep -anm1 $word file.txt | cut -d ":" -f 1)
 
