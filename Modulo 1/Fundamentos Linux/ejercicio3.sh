@@ -1,9 +1,9 @@
 #! /bin/bash
 
 if [ "$1" == "" ]; then
-  text="Que me gusta la bash!!!!"
+    text="Que me gusta la bash!!!!"
 else
-  text=$1
+    text=$1
 fi
 
 mkdir -p foo/dummy
