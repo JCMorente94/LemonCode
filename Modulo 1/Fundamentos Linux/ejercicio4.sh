@@ -7,9 +7,9 @@ word=$1
 if [ "$word" == "" ]; then
 	echo "Text not provided"
 else
-	text=$(curl -s $url)
-	count=$(grep -c $word <<< "$text")
-	line=$(grep -n -m 1 $word <<< "$text" | cut -d ":" -f 1)
+	curl -s $url > file.txt
+	count=$(grep -ac $word file.txt)
+	line=$(grep -anm1 $word file.txt | cut -d ":" -f 1)
 
 	if [ $count == 0 ]; then
 		echo "No se ha encontrado la palabra \"$word\""
