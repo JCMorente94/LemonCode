@@ -3,7 +3,7 @@
 url=$1
 word=$2
 
-if [ "$3" != "" ]; then
+if [ "$#" != 2 ]; then
 	echo "Se necesitan unicamente dos parametros para ejecutar este script"
 else
 	curl -s $url > file.txt
