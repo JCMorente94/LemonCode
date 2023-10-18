@@ -4,7 +4,7 @@ docker network create lemoncode-challenge
 ```
 ## Create a run mongodb container
 ```
-docker run -d --network lemoncode-challenge --name some-mongo mongo:latest
+docker run -d --network lemoncode-challenge --name some-mongo -v ./data:/data/db mongo:latest
 ```
 ## Build backend container
 ```
@@ -12,7 +12,7 @@ docker build -t backend -f ./node-stack/backend/Dockerfile ./node-stack/backend/
 ```
 ## Run backend container
 ```
-docker run -d --name topics-api --network lemoncode-challenge -e DATABASE_URL="mongodb://some-mongo:27017" backend
+docker run -d --name topics-api --network lemoncode-challenge --env-file ./node-stack/backend/.env.template backend
 ```
 ## Build frontend container
 ```
