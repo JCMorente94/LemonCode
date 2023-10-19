@@ -1,11 +1,13 @@
-FROM node:18
+FROM oven/bun:1.0.6
 
 WORKDIR /otp/app
 
-COPY . .
+COPY ./package.json .
 
-RUN npm ci
+RUN bun i
+
+COPY . .
 
 EXPOSE 3000
 
-CMD ["node", "server.js"]
+CMD ["bun", "server.js"]
