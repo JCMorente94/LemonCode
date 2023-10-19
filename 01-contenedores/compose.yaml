@@ -1,0 +1,32 @@
+services:
+  some-mongo:
+    image: mongo:latest
+    networks:
+      - lemoncode-challenge
+    volumes:
+      - ./data:/data/db
+  frontend:
+    build:
+      context: ./node-stack/frontend
+      dockerfile: Dockerfile
+    environment:
+      - API_URI=http://topics-api:5000/api/topics
+    ports:
+      - 8080:3000
+    networks:
+      - lemoncode-challenge
+    depends_on:
+      - topics-api
+  topics-api:
+    build:
+      context: ./node-stack/backend
+      dockerfile: Dockerfile
+    env_file:
+      - node-stack/backend/.env.template
+    networks:
+      - lemoncode-challenge
+    depends_on:
+      - some-mongo
+      
+networks:
+  lemoncode-challenge:
