@@ -18,8 +18,12 @@ docker run -d --name topics-api --network lemoncode-challenge --env-file ./node-
 ```
 docker build -t frontend -f ./node-stack/frontend/Dockerfile ./node-stack/frontend/
 ```
- ## Run frontend container
+## Run frontend container
 ```
 docker run -d --name frontend -e API_URI="http://topics-api:5000/api/topics" --network lemoncode-challenge -p 8080:3000 frontend
 ```
 Open localhost:8080 in browser
+## Run docker compose
+```
+docker compose up
+```
